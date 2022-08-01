@@ -1,6 +1,5 @@
 /**
- * @brief This file contains all implementations related to hardware peripherals
- * configuration.
+ * @brief This file contains all implementations related to hardware I/O config.
  */
 #ifndef HW_H_
 #define HW_H_
@@ -16,14 +15,7 @@
 /**
  * @brief configures all hardware peripherals.
  */
-void sys_config();
-
-/**
- * @brief send a message to uart interface.
- *
- * @param data The message to be sent.
- */
-void send_uart_data(const char *data);
+void hw_setup();
 
 /**
  * @brief

@@ -1,8 +1,9 @@
 #include "ms2_control.h"
 
-#include <util/delay.h>
-
 #include "hw.h"
+#include "uart.h"
+
+#include <util/delay.h>
 
 // controller mapping
 #define BUTTON_UP     0x11 // 0b00010001
@@ -41,11 +42,4 @@ void run_app() {
 
     _delay_ms(100);
   }
-}
-
-int main() {
-  sys_config();
-  run_app();
-
-  return 1; // normally never reached...
 }

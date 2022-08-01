@@ -7,6 +7,6 @@
 /**
  * @brief Run the application main loop.
  */
-void run_application();
+void run_app();
 
 #endif // MS2_CONTROL_H_

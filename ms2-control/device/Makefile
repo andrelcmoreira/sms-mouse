@@ -26,9 +26,9 @@ install:
 	@echo "\nFlashing app into microcontroller using the port $(MCU_PORT) ..."
 	avrdude -p $(MCU) -c avr109 -P $(MCU_PORT) -U flash:w:$(TARGET).hex
 
-src/%.o: src/%.c include/%.h
+src/%.o: src/%.c
 	@echo "Compiling $< ..."
 	$(CC) $(CFLAGS) $(LDFLAGS) -mmcu=$(MCU) $(INCLUDE_PATH) -c $< -o $@
 
 clean:
-	@rm lib/*.o src/*.o $(TARGET).elf $(TARGET).hex
+	@rm src/*.o $(TARGET).elf $(TARGET).hex
