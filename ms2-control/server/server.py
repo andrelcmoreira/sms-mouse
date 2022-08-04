@@ -1,19 +1,27 @@
-from mouse import get_position, drag, click, RIGHT
+from mouse import get_position, drag, click, RIGHT, LEFT
 from serial import Serial
 
 def to_left():
+    print(to_left.__name__)
+
     pos = get_position()
     drag(pos[0], pos[1], pos[0] - 10, pos[1])
 
 def to_right():
+    print(to_right.__name__)
+
     pos = get_position()
     drag(pos[0], pos[1], pos[0] + 10, pos[1])
 
 def to_up():
+    print(to_up.__name__)
+
     pos = get_position()
     drag(pos[0], pos[1], pos[0], pos[1] - 10)
 
 def to_down():
+    print(to_down.__name__)
+
     pos = get_position()
     drag(pos[0], pos[1], pos[0], pos[1] + 10)
 
