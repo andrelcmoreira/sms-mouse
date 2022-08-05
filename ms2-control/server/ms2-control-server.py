@@ -21,21 +21,21 @@ def to_down():
     drag(pos[0], pos[1], pos[0], pos[1] + 10)
 
 def parse_args():
-    parser = ArgumentParser()
+    parser = ArgumentParser(prog=argv[0])
 
     parser.add_argument(
         '-v',
         '--verbose',
         default=False,
         action='store_true',
-        help=''
+        help='enable the server logs'
     )
     parser.add_argument(
         '-p',
         '--port',
         default='/dev/ttyUSB0',
         nargs=1,
-        help=''
+        help='specify the USB port'
     )
 
     # no arguments provided.
@@ -56,14 +56,14 @@ def main(port):
             b'2': lambda: click(button=RIGHT)
         }
 
-        info('listening port %s...' % port)
+        info('listening port %s ...' % port)
         while True:
             data = p.read(size=1)
 
             info('byte received: %s' % data)
             if data in actions:
                 action = actions[data]
-                info('running mapped action...')
+                info('running mapped action ...')
                 action()
 
 if __name__ == "__main__":
@@ -71,6 +71,9 @@ if __name__ == "__main__":
 
     if args:
         if args.verbose:
-            basic_config(level=INFO, format='[%(asctime)s] %(message)s')
+            basic_config(
+                level=INFO,
+                format='[%(asctime)s] %(levelname)s - %(message)s'
+            )
 
         main(args.port)
