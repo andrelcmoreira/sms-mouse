@@ -38,7 +38,7 @@ def parse_args():
         help='specify the USB port'
     )
 
-    # no arguments provided.
+    # no arguments provided
     if not len(argv):
         parser.print_help()
         return None
@@ -57,6 +57,7 @@ def main(port):
         }
 
         info('listening port %s ...' % port)
+
         while True:
             data = p.read(size=1)
 
@@ -73,7 +74,7 @@ if __name__ == "__main__":
         if args.verbose:
             basic_config(
                 level=INFO,
-                format='[%(asctime)s] %(levelname)s - %(message)s'
+                format='%(asctime)s :: %(levelname)s - %(message)s'
             )
 
         main(args.port)
