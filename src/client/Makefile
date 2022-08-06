@@ -1,6 +1,4 @@
 TARGET = ms2_control_client
-SOURCES = $(wildcard src/*.c)
-OBJECTS = $(SOURCES:.c=.o)
 
 CC = avr-gcc
 OBJCOPY = avr-objcopy
@@ -15,19 +13,19 @@ endif
 
 all: app install
 
-app: $(OBJECTS)
-	@echo "\ngenerating app ..."
-	@mkdir -p build
+app: build/$(TARGET).o
+	@echo "### generating app ..."
 	$(CC) $(CFLAGS) -mmcu=$(MCU) $^ -o build/$(TARGET).elf
 	$(OBJCOPY) -j .text -j .data -O ihex build/$(TARGET).elf build/$(TARGET).hex
 
 install:
-	@echo "\nflashing app into microcontroller using the port $(MCU_PORT) ..."
+	@echo "### flashing app into microcontroller using the port $(MCU_PORT) ..."
 	avrdude -p $(MCU) -c avr109 -P $(MCU_PORT) -U flash:w:build/$(TARGET).hex
 
-src/%.o: src/%.c
-	@echo "compiling $< ..."
+build/%.o: %.c
+	@echo "### compiling $< ..."
+	@mkdir -p build
 	$(CC) $(CFLAGS) -mmcu=$(MCU) -c $< -o $@
 
 clean:
-	@rm -rf build/ src/*.o
+	@rm -rf build/

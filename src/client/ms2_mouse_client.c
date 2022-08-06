@@ -41,12 +41,12 @@ void send_uart_data(const char *data) {
   for (size_t i = 0; i < strlen(data); i++) {
     // wait untill the last transmission is finished
     while (!(UCSR1A & ( 1 << UDRE1)));
-    // put data into the buffer
+    // put the data into the buffer
     UDR1 = data[i];
   }
 }
 
-int app_mainloop() {
+int mainloop() {
   while (1) {
     if (bit_is_set(PINF, B_UP)) {
       send_uart_data("u");
@@ -72,5 +72,5 @@ int main() {
   setup_io();
   setup_uart();
 
-  return app_mainloop();
+  return mainloop();
 }

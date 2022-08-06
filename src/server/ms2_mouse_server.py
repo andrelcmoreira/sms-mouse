@@ -35,7 +35,7 @@ def parse_args():
         '--port',
         default='/dev/ttyUSB0',
         nargs=1,
-        help='specify the USB port'
+        help='specify the USB port whose the microcontroller is attached in'
     )
 
     # no arguments provided
