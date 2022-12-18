@@ -33,7 +33,6 @@ def parse_args():
     parser.add_argument(
         '-p',
         '--port',
-        default='/dev/ttyUSB0',
         nargs=1,
         help='specify the USB port whose the microcontroller is attached in'
     )
