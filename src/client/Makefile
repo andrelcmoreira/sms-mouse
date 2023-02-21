@@ -1,4 +1,4 @@
-TARGET = ms2_control_client
+TARGET = sms_mouse_client
 
 CC = avr-gcc
 OBJCOPY = avr-objcopy

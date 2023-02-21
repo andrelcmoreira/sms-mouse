@@ -1,4 +1,4 @@
-## ms2-mouse
+## sms-mouse
 
 **client dependencies**
 
