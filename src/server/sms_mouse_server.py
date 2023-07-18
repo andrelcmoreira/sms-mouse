@@ -38,7 +38,7 @@ def parse_args():
     )
 
     # no arguments provided
-    if not len(argv):
+    if len(argv) == 1:
         parser.print_help()
         return None
 
